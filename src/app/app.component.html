@@ -1,9 +1,81 @@
-<div>
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-</div>
+<header>
+  <h1>Welcome to {{ title }}!</h1>
+</header>
+<main>
+  <section>
+    <form>
+      <label>Search city</label>
+      <input value="Austria" placeholder="City or City, Country"/>
+      <button type="button">Search</button>
+    </form>
+  </section>
+  <section>
+    <p>Result</p>
+    <p>
+      You will need an adapter for your plug in Austria. 
+      You can buy one from 
+      <a href="https://www.amazon.com/s?k=type+c+adapter&i=electronics&ref=nb_sb_noss_2">Amazon</a>
+    </p>
+    <ul>
+        <li>
+          Austria
+        </li>
+        <li>
+          230V
+        </li>
+        <li>
+          50Hz
+        </li>
+        <li>
+          C/F
+        </li>
+    </ul>
+  </section>
+  <section>
+      <table>
+        <thead>
+          <tr>
+            <th>
+              Country
+            </th>
+            <th>
+              Voltage
+            </th>
+            <th>
+              Frequency(Hz)
+            </th>
+            <th>
+              Plug Type
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <td>
+                Austria
+              </td>
+              <td>
+                230V
+              </td>
+              <td>
+                50Hz
+              </td>
+              <td>
+                C/F
+              </td>
+          </tr>
+        </tbody>
+      </table>
+  </section>
 
-
+</main>
+<footer>
+  <p>
+    Source data obtained was from
+    <a href="https://www.worldstandards.eu/electricity/plug-voltage-by-country/">
+      World Standards
+    </a>
+  </p>
+</footer>
 
 <router-outlet></router-outlet>
