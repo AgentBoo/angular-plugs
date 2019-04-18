@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+<<<<<<< HEAD
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CityFormComponent } from './components/city-form/city-form.component';
@@ -14,6 +15,12 @@ import { CityFormComponent } from './components/city-form/city-form.component';
     HeaderComponent,
     FooterComponent,
     CityFormComponent
+=======
+
+@NgModule({
+  declarations: [
+    AppComponent
+>>>>>>> parent of 358d296... refactored out a header
   ],
   imports: [
     BrowserModule,
