@@ -1,0 +1,35 @@
+<img src="./assets/images/sockets.jpg"/>
+<table>
+	<thead>
+	  <tr>
+	    <th>
+	      Country
+	    </th>
+	    <th>
+	      Voltage
+	    </th>
+	    <th>
+	      Frequency(Hz)
+	    </th>
+	    <th>
+	      Plug Type
+	    </th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr *ngFor="let socket of socketsByCountry">
+	      <td>
+	        {{ socket.country }}
+	      </td>
+	      <td>
+	        {{ socket.voltage }}
+	      </td>
+	      <td>
+	        {{ socket.frequency }}
+	      </td>
+	      <td>
+	        {{ socket.type | slashJoin }}
+	      </td>
+	  </tr>
+	</tbody>
+</table>
