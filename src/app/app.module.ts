@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CityFormComponent } from './components/city-form/city-form.component';
 import { HeaderComponent } from './components/header/header.component';
+import { PlugResultComponent } from './components/plug-result/plug-result.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     CityFormComponent,
-    HeaderComponent
+    HeaderComponent,
+    PlugResultComponent
   ],
   imports: [
     BrowserModule,
