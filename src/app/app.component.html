@@ -1,11 +1,7 @@
 <app-header [title]="title"></app-header>
 <main>
   <section>
-    <form>
-      <label>Search city</label>
-      <input value="Austria" placeholder="City or City, Country"/>
-      <button type="button">Search</button>
-    </form>
+    <app-city-form></app-city-form>
   </section>
   <section>
     <p>Result</p>
@@ -65,15 +61,7 @@
         </tbody>
       </table>
   </section>
-
 </main>
-<footer>
-  <p>
-    Source data obtained was from
-    <a href="https://www.worldstandards.eu/electricity/plug-voltage-by-country/">
-      World Standards
-    </a>
-  </p>
-</footer>
+<app-footer></app-footer>
 
 <router-outlet></router-outlet>
