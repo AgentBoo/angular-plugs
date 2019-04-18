@@ -1,0 +1,14 @@
+[
+	{
+		"country": "Austria",
+		"voltage": "230V",
+		"frequency": "50Hz",
+		"type": ["C", "F"]
+	},
+	{
+		"country": "Belgium",
+		"voltage": "230V",
+		"frequency": "50Hz",
+		"type": ["C", "F"]
+	}
+]
