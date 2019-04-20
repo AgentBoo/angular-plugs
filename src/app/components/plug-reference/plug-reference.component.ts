@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import sockets from "../../../assets/sockets.json"
+import data from "../../../assets/sockets.json"
 
-// for importing json files, see 
+// imported json will be resolved to a JS data structure, 
+// so there is no need to call JSON.parse(), see 
+// https://www.typescriptlang.org/docs/handbook/compiler-options.html
+// https://stackblitz.com/edit/json-import-example 
 // https://www.reddit.com/r/Angular2/comments/9phvw1/pro_tip_with_angular_7_you_can_import_json_files/
 
 @Component({
@@ -10,9 +13,13 @@ import sockets from "../../../assets/sockets.json"
   styleUrls: ['./plug-reference.component.scss']
 })
 export class PlugReferenceComponent implements OnInit {
-	socketsByCountry = sockets 
+	sockets = data
 
   constructor() { }
+
+  get socketsByCountry(){
+  	return Object.keys(this.sockets).map(country => this.sockets[country])
+  }
 
   ngOnInit() {
   }

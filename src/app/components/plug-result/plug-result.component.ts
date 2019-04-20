@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PlugCheckerService } from '../../services/plug-checker.service'
 
 @Component({
   selector: 'app-plug-result',
@@ -11,7 +12,11 @@ export class PlugResultComponent implements OnInit {
 	failure = "You will need an adapter"
 	productURL = "https://www.amazon.com/s?k=type+c+adapter&i=electronics&ref=nb_sb_noss_2"
 
-  constructor() { }
+  constructor(private plugCheckerService: PlugCheckerService) { }
+
+  get location(){
+    return this.plugCheckerService.plug
+  }  
 
   ngOnInit() {
   }

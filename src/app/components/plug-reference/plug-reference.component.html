@@ -19,16 +19,16 @@
 	<tbody>
 	  <tr *ngFor="let socket of socketsByCountry">
 	      <td>
-	        {{ socket.country }}
+	        {{socket.country}}
 	      </td>
 	      <td>
-	        {{ socket.voltage }}
+	        {{socket.voltage}}
 	      </td>
 	      <td>
-	        {{ socket.frequency }}
+	        {{socket.frequency}}
 	      </td>
 	      <td>
-	        {{ socket.type | slashJoin }}
+	      	{{socket.types | slashJoin}}
 	      </td>
 	  </tr>
 	</tbody>
