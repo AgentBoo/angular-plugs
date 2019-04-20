@@ -8,9 +8,9 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CityFormComponent } from './components/city-form/city-form.component';
 import { HeaderComponent } from './components/header/header.component';
-import { PlugResultComponent } from './components/plug-result/plug-result.component';
 import { PlugReferenceComponent } from './components/plug-reference/plug-reference.component';
 import { SlashJoinPipe } from './pipes/slash-join.pipe';
+import { PlugCompatibilityComponent } from './components/plug-compatibility/plug-compatibility.component';
 
 @NgModule({
   declarations: [
@@ -18,9 +18,9 @@ import { SlashJoinPipe } from './pipes/slash-join.pipe';
     FooterComponent,
     CityFormComponent,
     HeaderComponent,
-    PlugResultComponent,
     PlugReferenceComponent,
-    SlashJoinPipe
+    SlashJoinPipe,
+    PlugCompatibilityComponent
   ],
   imports: [
     BrowserModule,
