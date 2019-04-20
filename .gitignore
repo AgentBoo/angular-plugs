@@ -45,6 +45,9 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Misc 
+# Misc
+LAB_BOOK.md 
+countries.json
+data.json
+
 *.local.ts
-LAB_BOOK.md
