@@ -1,0 +1,25 @@
+<form [formGroup]="cityForm" onSubmit="onSubmit()">
+  <label>Search city</label>
+  <input 
+  	type="text"
+  	placeholder="City or City, Country" 
+  	formControlName="city"/>
+  <button 
+  	type="button" 
+  	[disabled]="!cityForm.valid"
+  	(click)="onSubmit()">
+  	Search
+  </button>
+</form>
+
+<div>
+	<div *ngIf="city.invalid && city.dirty">
+		<p *ngIf="city.errors.pattern">
+			Query might contain odd characters
+			<span style="background:red; white-space: pre">{{ city.value }}</span>
+		</p>
+		<p *ngIf="city.errors.maxLength">
+			Query is too long
+		</p>
+	</div>
+</div>
