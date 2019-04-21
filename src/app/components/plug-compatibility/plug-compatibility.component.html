@@ -1,12 +1,12 @@
 <h4>Plug Compatibility Result</h4>
 <div>
 	<p>
-		{{message}}
+		{{warning}}
 	</p>
-	<p>
-		{{compatible ? successResult : failureResult}}
-	</p>
-	<p *ngIf="!compatible">
-		You can buy one from <a href={{productURL}}>Amazon</a>
-	</p>
+	<div>
+		<p *ngFor="let result of results">
+			<span>{{result.city}},{{result.country}}</span>
+			<span>{{result.voltage}}</span>
+		</p>
+	</div>
 </div>
