@@ -11,6 +11,8 @@ import { PlugReferenceComponent } from './components/plug-reference/plug-referen
 import { SlashJoinPipe } from './pipes/slash-join.pipe';
 import { PlugCompatibilityComponent } from './components/plug-compatibility/plug-compatibility.component';
 import { LocationFormComponent } from './components/location-form/location-form.component';
+import { ProductUrlPipe } from './pipes/product-url.pipe';
+import { CompatibilityVerbosePipe } from './pipes/compatibility-verbose.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { LocationFormComponent } from './components/location-form/location-form.
     PlugReferenceComponent,
     SlashJoinPipe,
     PlugCompatibilityComponent,
-    LocationFormComponent
+    LocationFormComponent,
+    ProductUrlPipe,
+    CompatibilityVerbosePipe
   ],
   imports: [
     BrowserModule,
