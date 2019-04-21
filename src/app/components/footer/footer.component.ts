@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-	source = "World Standards"
-	sourceURL = "https://www.worldstandards.eu/electricity/plug-voltage-by-country/"
+	source = "World Standards";
+	sourceURL = "https://www.worldstandards.eu/electricity/plug-voltage-by-country/";
 
   constructor() { }
 

@@ -1,35 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { PlugCheckerService } from '../../services/plug-checker.service';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { PlugCheckerService } from "../../services/plug-checker.service";
+import { environment } from "../../../environments/environment";
 
-// `city, ` case is left out on purpose
-const re = /^([a-zA-Z]+\s?)+[\,]?[a-zA-Z\s]?([a-zA-Z]+\s?)*$/
+// This regex does not cover the case `{cityName}, `
+const regex = /^([a-zA-Z]+\s?)+[\,]?[a-zA-Z\s]?([a-zA-Z]+\s?)*$/;
+const longestLocationName = environment.maxCity.length + environment.maxCountry.length
 
 @Component({
-  selector: 'app-location-form',
-  templateUrl: './location-form.component.html',
-  styleUrls: ['./location-form.component.scss']
+  selector: "app-location-form",
+  templateUrl: "./location-form.component.html",
+  styleUrls: ["./location-form.component.scss"]
 })
 export class LocationFormComponent implements OnInit {
   cityForm = new FormGroup({
-		city: new FormControl('', [
-			Validators.required,
-			Validators.maxLength(68), 
-			Validators.pattern(re)
-		])
-	})
+    city: new FormControl("", [
+      Validators.required,
+      Validators.pattern(regex),
+      Validators.maxLength(longestLocationName),
+    ])
+  });
 
-  constructor(private plugChecker: PlugCheckerService) { }
-
-  get city(){
-    return this.cityForm.get('city')
-  }
+  constructor(private checker: PlugCheckerService) { }
 
   ngOnInit() {
   }
 
-  onSubmit(): void{
-    this.plugChecker.setMessage(this.city.value)
+  get city() {
+    return this.cityForm.get("city");
+  }
+
+  onSubmit(): void {
+    this.checker.determineCompatibility(this.city.value);
   }
 
 }

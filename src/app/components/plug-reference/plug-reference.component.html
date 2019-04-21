@@ -2,34 +2,18 @@
 <table>
 	<thead>
 	  <tr>
-	    <th>
-	      Country
-	    </th>
-	    <th>
-	      Voltage
-	    </th>
-	    <th>
-	      Frequency(Hz)
-	    </th>
-	    <th>
-	      Plug Type
-	    </th>
+	    <th>Country</th>
+	    <th>Voltage</th>
+	    <th>Frequency (Hz)</th>
+	    <th>Plug Type</th>
 	  </tr>
 	</thead>
 	<tbody>
 	  <tr *ngFor="let socket of socketsByCountry">
-	      <td>
-	        {{socket.country}}
-	      </td>
-	      <td>
-	        {{socket.voltage}}
-	      </td>
-	      <td>
-	        {{socket.frequency}}
-	      </td>
-	      <td>
-	      	{{socket.types | slashJoin}}
-	      </td>
+	      <td>{{socket.country}}</td>
+	      <td>{{socket.voltage}}</td>
+	      <td>{{socket.frequency}}</td>
+	      <td>{{socket.types | slashJoin}}</td>
 	  </tr>
 	</tbody>
 </table>

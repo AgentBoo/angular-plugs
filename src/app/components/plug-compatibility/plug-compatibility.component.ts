@@ -9,20 +9,21 @@ import { PlugCheckerService } from '../../services/plug-checker.service';
 export class PlugCompatibilityComponent implements OnInit {
   message = ''
 	compatible = false
+  searchResult = { types: ["A","B"] }
 	successResult = "You don't need an adapter"
 	failureResult = "You will need an adapter"
 
-  constructor(private plugChecker: PlugCheckerService) { 
-    this.plugChecker.message.subscribe(message => this.message = message)
+  constructor(private checker: PlugCheckerService) { 
+    this.checker.message.subscribe(message => this.message = message)
+    this.checker.codes.subscribe(codes => console.log(codes))
   }
 
-  get productURL(){
-  	return "https://www.amazon.com/s?k=type+c+adapter&i=electronics&ref=nb_sb_noss_2"
+  get productURL(): string{
+    const plugType = this.searchResult.types[0]
+  	return `https://www.amazon.com/s?k=type+{plugType}+adapter&i=electronics`
   }
 
   ngOnInit() {
   }
-
-
 
 }

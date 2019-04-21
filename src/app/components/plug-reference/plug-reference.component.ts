@@ -1,11 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import data from "../../../assets/sockets.json"
-
-// imported json will be resolved to a JS data structure, 
-// so there is no need to call JSON.parse(), see 
-// https://www.typescriptlang.org/docs/handbook/compiler-options.html
-// https://stackblitz.com/edit/json-import-example 
-// https://www.reddit.com/r/Angular2/comments/9phvw1/pro_tip_with_angular_7_you_can_import_json_files/
+import { SocketsService } from '../../services/sockets.service'
 
 @Component({
   selector: 'app-plug-reference',
@@ -13,13 +7,9 @@ import data from "../../../assets/sockets.json"
   styleUrls: ['./plug-reference.component.scss']
 })
 export class PlugReferenceComponent implements OnInit {
-	sockets = data
+  socketsByCountry = this.sockets.socketsByCountry
 
-  constructor() { }
-
-  get socketsByCountry(){
-  	return Object.keys(this.sockets).map(country => this.sockets[country])
-  }
+  constructor(private sockets: SocketsService) { }
 
   ngOnInit() {
   }

@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  apiURL: "https://api.openweathermap.org/data/2.5/weather"
+  apiURL: "https://api.openweathermap.org/data/2.5/find",
+  maxCity: "Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch", 
+  maxCountry: "The United Kingdom of Great Britain and Northern Ireland"
 };
 
 /*
