@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Subject }    from 'rxjs';
+import { Subject, of }    from 'rxjs';
 import { LocationApiService } from './location-api.service'
-import { SocketsService } from './sockets.service'
+import { SocketsService, SocketResult } from './sockets.service'
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlugCheckerService {
-	// Observable source
-  isChecking = new Subject<boolean>()
-  results = new Subject<[]>()
-  warning = new Subject<string>()
-
+	// Observable sources
+  isChecking = new Subject<boolean>();
+  results = new Subject<SocketResult[]>();
+  warning = new Subject<string>();
+  
   constructor(
   	private api: LocationApiService, 
   	private sockets: SocketsService) { 
@@ -27,12 +27,19 @@ export class PlugCheckerService {
     return Array.from(uniqueLocations)
   }
 
-  setWarning(message){
-    this.warning.next(message)
+  private locateSockets(locations){
+    return locations.map(location => {
+      const [city, code] = location.split(',')
+      return this.sockets.findByCountryCode(city, code)
+    })
+  }  
+
+  setIsChecking(){
+    this.isChecking.next(true)
   }
 
-  resetWarning(){
-    this.warning.next('')
+  resetIsChecking(){
+    this.isChecking.next(false)
   }
 
   setResults(sockets){
@@ -43,7 +50,16 @@ export class PlugCheckerService {
     this.results.next([])
   }
 
+  setWarning(message){
+    this.warning.next(message)
+  }
+
+  resetWarning(){
+    this.warning.next('')
+  }
+
   determineCompatibility(formInput: string){
+    this.setIsChecking()
     this.resetWarning()
     this.resetResults()
 
@@ -51,22 +67,20 @@ export class PlugCheckerService {
       data => {
         if(data.length){
           const locations = this.getUniqueLocations(data)
-          const results = locations.map(location => {
-            const [city, code] = location.split(',')
-            return this.sockets.findByCountryCode(city, code)
-          })
+          const results = this.locateSockets(locations)
           this.setResults(results)
-          console.log(results)
         } else {
-          this.setWarning('Location could not be found')
+          this.setWarning('Location could not be found.')
         }
+        this.resetIsChecking()
       },
       error => {
         if(400 <= error.status && error.status <= 429){
-          this.setWarning('Network request failed')
+          this.setWarning('Location service was used incorrectly.')
         } else {
-          this.setWarning('Something went wrong')
+          this.setWarning(`Network request failed (${error.status} ${error.statusText}).`)
         }
+        this.resetIsChecking()
         console.error(error.error.message)
       }
     )

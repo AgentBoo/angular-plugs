@@ -11,14 +11,14 @@ import codes from "../../assets/data/codes.json"
  * https://www.typescriptlang.org/docs/handbook/compiler-options.html
  */
 
-interface Socket{
+export interface Socket{
   country: string; 
   voltage: string; 
   frequency: string; 
   types: string[];
 }
 
-interface SocketResult extends Socket{
+export interface SocketResult extends Socket{
   city: string;
   compatible: boolean;
 }
