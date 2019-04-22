@@ -21,7 +21,11 @@ export class LocationFormComponent implements OnInit {
     ])
   });
 
-  constructor(private checker: PlugCheckerService) { }
+  isChecking = false 
+  
+  constructor(private checker: PlugCheckerService) { 
+    this.checker.isChecking.subscribe(checking => this.isChecking = checking)
+  }
 
   ngOnInit() {
   }

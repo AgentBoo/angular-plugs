@@ -1,12 +1,15 @@
 <h4>Plug Compatibility Result</h4>
 <div>
-	<p>
+	<p *ngIf="warning.length; else resultBlock">
 		{{warning}}
 	</p>
-	<div>
-		<p *ngFor="let result of results">
-			<span>{{result.city}},{{result.country}}</span>
-			<span>{{result.voltage}}</span>
-		</p>
-	</div>
+	<ng-template #resultBlock>
+		<div *ngFor="let result of searchResults">
+			<p>{{result.city}},{{result.country}}</p>
+			<p>{{result.voltage}}</p>
+			<p>{{result.compatible | compatibilityVerbose}}</p>
+			<p>{{result.types | slashJoin }}</p>
+			<p *ngIf="!result.compatible">You can find an adapter at <a href="{{result.types | productUrl }}" target="_blank">Amazon</a></p>
+		</div>
+	</ng-template>
 </div>

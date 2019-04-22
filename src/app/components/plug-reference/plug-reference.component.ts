@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SocketsService } from '../../services/sockets.service'
+import { SocketsService, Socket } from '../../services/sockets.service'
 
 @Component({
   selector: 'app-plug-reference',
@@ -7,7 +7,7 @@ import { SocketsService } from '../../services/sockets.service'
   styleUrls: ['./plug-reference.component.scss']
 })
 export class PlugReferenceComponent implements OnInit {
-  socketsByCountry = this.sockets.socketsByCountry
+  socketsByCountry: Socket[] = this.sockets.socketsByCountry
 
   constructor(private sockets: SocketsService) { }
 

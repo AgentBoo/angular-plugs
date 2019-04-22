@@ -5,10 +5,12 @@
   	placeholder="City or City, Country" 
   	formControlName="city"/>
   <button 
+    mat-flat-button
+    color="accent"
   	type="button" 
-  	[disabled]="!cityForm.valid"
+  	[disabled]="!cityForm.valid || isChecking"
   	(click)="onSubmit()">
-  	Search
+  	{{isChecking ? "Checking..." : "Check"}}
   </button>
 </form>
 <div>
