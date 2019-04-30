@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { SocketsService, Socket } from '../../services/sockets.service'
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { SocketsService, Socket } from '../../services/sockets.service';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-plug-reference',
@@ -7,11 +8,18 @@ import { SocketsService, Socket } from '../../services/sockets.service'
   styleUrls: ['./plug-reference.component.scss']
 })
 export class PlugReferenceComponent implements OnInit {
-  socketsByCountry: Socket[] = this.sockets.socketsByCountry
+	openReferenceTable: boolean = false
+  displayedColumns: string[] = ['country', 'voltage', 'frequency', 'plug types'];
+  socketsByCountry: MatTableDataSource<Socket>; 
 
-  constructor(private sockets: SocketsService) { }
+  @ViewChild(MatPaginator) paginator: MatPaginator
+
+  constructor(private sockets: SocketsService) { 
+  	this.socketsByCountry = new MatTableDataSource(this.sockets.socketsByCountry)
+  }
 
   ngOnInit() {
+  	this.socketsByCountry.paginator = this.paginator
   }
 
 }
