@@ -1,0 +1,24 @@
+@import "../../../variables";
+
+.app-header {
+	background: $indigo-500;
+	padding: 0 15% 5vh;
+}
+
+.app-header-title {
+	display: inline-block;
+	margin-bottom: calc(5vh + 5vw);
+	
+	span {
+		color: $white;
+	}
+
+	span:nth-child(3n) {
+		color: #f06292;
+	}
+}
+
+.app-header-text {
+	color: $white;
+	margin-bottom: 2rem;
+}

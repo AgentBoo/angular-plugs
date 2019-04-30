@@ -1,3 +1,20 @@
-<header>
-  <h1>Welcome to {{ title }}!</h1>
+<header class="app-header">
+	<h1 class="app-header-title">
+		<span *ngFor="let word of title.split(' ')">{{ word }} </span>
+	</h1>
+	<div class="app-header-text">
+		<h1>
+			There are as many as
+			<span class="pink-pigment">15 different styles</span> of plugs and wall
+			outlets
+		</h1>
+		<h3>
+			Do you know which type you will need on your next travel overseas?
+		</h3>
+		<p>
+			Search for a city that you will be visiting and let us tell you if
+			you will need an adapter for your eletronics
+		</p>
+	</div>
+	<app-location-form></app-location-form>
 </header>
