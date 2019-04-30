@@ -1,0 +1,18 @@
+@import "../../../variables";
+
+.app-main{
+	padding: 5vh 15%;
+}
+
+.img-wrapper{
+	display: flex;
+	align-items: center;
+	flex-flow: row nowrap;
+	justify-content: center;
+	margin: 0 auto;
+	width: 80%;
+
+	img{
+		width: inherit;
+	}
+}
