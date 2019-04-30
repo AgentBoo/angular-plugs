@@ -61,7 +61,6 @@ export class PlugCheckerService {
   determineCompatibility(formInput: string){
     this.setIsChecking()
     this.resetWarning()
-    this.resetResults()
 
     this.api.retrieveLocation(formInput).subscribe(
       data => {
@@ -76,7 +75,7 @@ export class PlugCheckerService {
       },
       error => {
         if(400 <= error.status && error.status <= 429){
-          this.setWarning('Location service was used incorrectly.')
+          this.setWarning('Location service was used incorrectly. Check your API keys.')
         } else {
           this.setWarning(`Network request failed (${error.status} ${error.statusText}).`)
         }
