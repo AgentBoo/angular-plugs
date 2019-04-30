@@ -1,26 +1,32 @@
-<form [formGroup]="cityForm" onSubmit="onSubmit()">
-  <label>Search city</label>
-  <input 
-  	type="text"
-  	placeholder="City or City, Country" 
-  	formControlName="city"/>
-  <button 
-    mat-flat-button
-    color="accent"
-  	type="button" 
-  	[disabled]="!cityForm.valid || isChecking"
-  	(click)="onSubmit()">
-  	{{isChecking ? "Checking..." : "Check"}}
-  </button>
-</form>
-<div>
-	<div *ngIf="city.invalid && city.dirty">
-		<p *ngIf="city.errors.pattern">
-			Query might contain odd characters
-			<span style="background:red; white-space: pre">{{ city.value }}</span>
-		</p>
-		<p *ngIf="city.errors.maxLength">
-			Query is too long
-		</p>
-	</div>
-</div>
+<mat-card class="app-location-form">
+  <form
+    fxLayout="column"
+    fxLayoutAlign="space-between stretch"
+    [formGroup]="cityForm"
+    onSubmit="onSubmit()">
+    <mat-form-field>
+      <input
+        matInput
+        autofocus
+        type="text"
+        placeholder="City e.g. Helsinki or Helsinki, FI"
+        formControlName="city" />
+      <mat-hint align="end"> {{ city.value.length }}/{{ maxLength }} </mat-hint>
+      <mat-error *ngIf="city.hasError('pattern')">
+        Query might contain <strong>odd characters</strong> such as extra
+        spaces, numbers, symbols, and extra spaces.
+      </mat-error>
+      <mat-error *ngIf="city.hasError('maxLength')">
+        Query is too <strong>long</strong>.
+      </mat-error>
+    </mat-form-field>
+    <button
+      mat-flat-button
+      color="accent"
+      type="button"
+      [disabled]="!cityForm.valid || isChecking"
+      (click)="onSubmit()">
+      <span>{{ isChecking ? "Checking..." : "Check" }}</span>
+    </button>
+  </form>
+</mat-card>

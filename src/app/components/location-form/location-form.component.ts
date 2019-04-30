@@ -17,6 +17,8 @@ export class LocationFormComponent implements OnInit {
     city: new FormControl("", [
       Validators.required,
       Validators.pattern(regex),
+      // min 2 chars because of API requirements
+      Validators.minLength(2),
       Validators.maxLength(longestLocationName),
     ])
   });
@@ -34,6 +36,10 @@ export class LocationFormComponent implements OnInit {
     return this.cityForm.get("city");
   }
 
+  get maxLength(){
+    return longestLocationName
+  }
+  
   onSubmit(): void {
     this.checker.determineCompatibility(this.city.value);
   }
