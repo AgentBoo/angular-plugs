@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -14,6 +15,7 @@ import { PlugCompatibilityComponent } from './components/plug-compatibility/plug
 import { LocationFormComponent } from './components/location-form/location-form.component';
 import { ProductUrlPipe } from './pipes/product-url.pipe';
 import { CompatibilityVerbosePipe } from './pipes/compatibility-verbose.pipe';
+import { MainComponent } from './components/main/main.component';
 
 @NgModule({
   declarations: [
@@ -25,10 +27,12 @@ import { CompatibilityVerbosePipe } from './pipes/compatibility-verbose.pipe';
     PlugCompatibilityComponent,
     LocationFormComponent,
     ProductUrlPipe,
-    CompatibilityVerbosePipe
+    CompatibilityVerbosePipe,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
